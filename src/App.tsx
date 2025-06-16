@@ -14,7 +14,14 @@ export default function App() {
   const Main = styled.main`
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+  `
+
+  const Info = styled.div`
+    margin-top: 10px;
+    font-size:1.3rem;
   `
 
   return (
@@ -23,7 +30,8 @@ export default function App() {
         <h1>Pomodoro Timer</h1>
       </header>
       <Main>
-        <Timer />
+        <Timer />        
+          <Info>All - and + can be held down to rapidly change settings.</Info>
       </Main>
     </Body>
   )
