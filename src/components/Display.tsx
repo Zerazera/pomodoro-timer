@@ -2,6 +2,7 @@ import styled from "@emotion/styled"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBell } from "@fortawesome/free-solid-svg-icons"
 import { useState, useRef } from "react"
+import type { SessionType } from "../types/SessionType"
 
 const Clock = styled.div`
     width: 100%;    
@@ -71,7 +72,7 @@ const ClockFooter = styled.footer`
 type DisplayProps = {
     timeLeft: number, 
     pomodorosLeft: number, 
-    timerState: 'SESSION' | 'SHORT BREAK' | 'LONG BREAK',
+    timerState: SessionType,
     alarmIsPlaying: boolean,
     isStarted: boolean,
     isRunning: boolean

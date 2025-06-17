@@ -1,0 +1,1 @@
+export type SessionType = 'SESSION' | 'SHORT BREAK' | 'LONG BREAK'

@@ -4,6 +4,7 @@ import Display from "./Display"
 import ControlBank from "./ControlBank"
 import SettingsBank from "./SettingsBank"
 import AlarmSrc from '../assets/sounds/Alarm.mp3'
+import type { SessionType } from "../types/SessionType"
 
 const StyledTimer = styled.div`
     color: red;
@@ -27,11 +28,20 @@ const InnerTimer = styled.div`
     border: 15px double red;
 `
 
-const defaultValues = {
+type defaultValuesType = {
+    sessionLength: number,
+    shortBreakLength: number,
+    longBreakLength: number,
+    maxPomodoros: number,
+    timerState: SessionType
+}
+
+const defaultValues: defaultValuesType = {
     sessionLength: 25,
     shortBreakLength: 5,
     longBreakLength: 30,
-    maxPomodoros: 4
+    maxPomodoros: 4,
+    timerState: 'SESSION'
 }
 
 export default function Timer() {
@@ -39,7 +49,7 @@ export default function Timer() {
     const [shortBreakLength, setShortBreakLength] = useState(defaultValues.shortBreakLength)
     const [longBreakLength, setLongBreakLength] = useState(defaultValues.longBreakLength)
     const [maxPomodoros, setMaxPomodoros] = useState(defaultValues.maxPomodoros)
-    const [timerState, setTimerState] = useState<'SESSION' | 'SHORT BREAK' | 'LONG BREAK'>('SESSION')
+    const [timerState, setTimerState] = useState<SessionType>(defaultValues.timerState)
     // timeLeft is in milliseconds
     const [timeLeft, setTimeLeft] = useState(sessionLength * 60 * 1000)
     const [pomodorosLeft, setPomodorosLeft] = useState(maxPomodoros)
@@ -88,13 +98,13 @@ export default function Timer() {
     const reset = () => {
         clearInterval(timerIntervalRef.current)
         silenceAlarm()
-        setSessionLength(25)
-        setShortBreakLength(5)
-        setLongBreakLength(30)
-        setMaxPomodoros(4)
-        setTimerState('SESSION')
-        setTimeLeftInMinutes(25)
-        setPomodorosLeft(4)
+        setSessionLength(defaultValues.sessionLength)
+        setShortBreakLength(defaultValues.shortBreakLength)
+        setLongBreakLength(defaultValues.longBreakLength)
+        setMaxPomodoros(defaultValues.maxPomodoros)
+        setTimerState(defaultValues.timerState)
+        setTimeLeftInMinutes(defaultValues.sessionLength)
+        setPomodorosLeft(defaultValues.maxPomodoros)
         setIsRunning(false)
         setIsStarted(false)
     }    
