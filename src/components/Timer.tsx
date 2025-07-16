@@ -192,7 +192,7 @@ export default function Timer() {
                     increaseMaxPomodoros={increaseMaxPomodoros}
                     decreaseMaxPomodoros={decreaseMaxPomodoros}
                 />
-                <audio id="beep" src={AlarmSrc} ref={audioRef} loop></audio>
+                <audio id="beep" src={AlarmSrc} ref={audioRef} loop />
             </InnerTimer>
         </StyledTimer>
     )
